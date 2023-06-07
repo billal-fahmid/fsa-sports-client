@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const navItems = <>
-        <li><Link>Home</Link></li>
-        <li><Link>Instructors</Link></li>
-        <li><Link>Classes</Link></li>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/instructors'>Instructors</Link></li>
+        <li><Link to='/classes'>Classes</Link></li>
         <li><Link>Dashboard</Link></li>
         <li><Link>Profile picture</Link></li>
+        <li><Link to='/login'>Login</Link></li>
         
     </>
     return (
@@ -21,8 +22,8 @@ const Navbar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <div className='flex items-center justify-between'>
-                    <img className='h-24 w-full' src='https://www.logomyway.com/logos_new/25473/Functional_Sports_Academy_1_358857187133.png' alt="" />
+                <div className='flex items-center py-1 justify-between'>
+                    <img className='h-16 w-16' src='https://www.logomyway.com/logos_new/25473/Functional_Sports_Academy_1_358857187133.png' alt="" />
                     <h2 className='text-xl w-full font-semibold '>FSA-Sports</h2>
                 </div>
             </div>
