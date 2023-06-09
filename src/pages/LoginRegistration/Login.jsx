@@ -1,12 +1,41 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { AuthContext } from '../../Providers/AuthProvider';
+import { TbFidgetSpinner } from 'react-icons/tb';
+import toast, { Toaster } from 'react-hot-toast';
+import SocialLogin from '../../Shared/SocialLogin';
+
 
 const Login = () => {
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+    const {loginUser,loading , setLoading} = useContext(AuthContext);
+    const [error ,setError] = useState('')
+
+    const navigate = useNavigate()
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
     const onSubmit = (data,errors) => {
         console.log(data,errors)
+        loginUser(data.email, data.password)
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser)
+            toast.success('Login Success')
+            setError('')
+            navigate(from, {replace:true})
+        })
+        .catch(err => {
+
+            // setError(err.message)
+            toast.error(err.message)
+            setLoading(false)
+            console.log(err)
+        })
+        
     };
 
 
@@ -18,6 +47,7 @@ const Login = () => {
                     <h1 className="text-3xl font-semibold text-center text-purple-700 uppercase">
                         Sign in
                     </h1>
+                    <Toaster />
                     <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
                         <div className="mb-2">
                             <label
@@ -31,6 +61,7 @@ const Login = () => {
                                 {...register("email" , { required: true })}
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                             />
+                            {errors.email && <span>Email is required</span>}
                         </div>
                         <div className="mb-2">
                             <label
@@ -44,6 +75,7 @@ const Login = () => {
                                 {...register("password" , { required: true })}
                                 className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                             />
+                            {errors.password && <span>Password is required</span>}
                         </div>
                         <a
                             href="#"
@@ -52,15 +84,20 @@ const Login = () => {
                             Forget Password?
                         </a>
                         <div className="mt-6">
-                            <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
-                                Login
+                            <button disabled={loading} className="w-full px-4 text-center py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
+                        
+                            {loading? <TbFidgetSpinner className='m-auto animate-spin'> </TbFidgetSpinner> : 'Login'}
+                           
+                               
                             </button>
                         </div>
+
+                        {error && <span className='text-orange-500 font-bold'>{error}</span>}
                     </form>
                     <div className="relative flex items-center justify-center w-full mt-6 border border-t">
                         <div className="absolute px-5 bg-white">Or</div>
                     </div>
-                    <div className="flex mt-4 gap-x-2">
+                    {/* <div className="flex mt-4 gap-x-2">
                         <button
                             type="button"
                             className="flex items-center justify-center w-full p-2 border border-gray-600 rounded-md focus:ring-2 focus:ring-offset-1 focus:ring-violet-600"
@@ -91,7 +128,8 @@ const Login = () => {
                                 <path d="M31.937 6.093c-1.177 0.516-2.437 0.871-3.765 1.032 1.355-0.813 2.391-2.099 2.885-3.631-1.271 0.74-2.677 1.276-4.172 1.579-1.192-1.276-2.896-2.079-4.787-2.079-3.625 0-6.563 2.937-6.563 6.557 0 0.521 0.063 1.021 0.172 1.495-5.453-0.255-10.287-2.875-13.52-6.833-0.568 0.964-0.891 2.084-0.891 3.303 0 2.281 1.161 4.281 2.916 5.457-1.073-0.031-2.083-0.328-2.968-0.817v0.079c0 3.181 2.26 5.833 5.26 6.437-0.547 0.145-1.131 0.229-1.724 0.229-0.421 0-0.823-0.041-1.224-0.115 0.844 2.604 3.26 4.5 6.14 4.557-2.239 1.755-5.077 2.801-8.135 2.801-0.521 0-1.041-0.025-1.563-0.088 2.917 1.86 6.36 2.948 10.079 2.948 12.067 0 18.661-9.995 18.661-18.651 0-0.276 0-0.557-0.021-0.839 1.287-0.917 2.401-2.079 3.281-3.396z"></path>
                             </svg>
                         </button>
-                    </div>
+                    </div> */}
+                    <SocialLogin></SocialLogin>
 
                     <p className="mt-8 text-xs font-light text-center text-gray-700">
                         {" "}
@@ -101,6 +139,7 @@ const Login = () => {
                             href="#"
                             className="font-medium text-purple-600 hover:underline"
                         >
+                            {/* {loading ? <RiLoad } */}
                             Sign up
                         </Link>
                     </p>

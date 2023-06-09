@@ -1,15 +1,46 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Providers/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const Navbar = () => {
+
+    const { user, logOut } = useContext(AuthContext)
+    console.log(user)
+
+    const handleLogout = () => {
+        logOut()
+            .then(() => {
+                toast.success('logout success')
+            })
+            .catch(err => {
+                toast.error(err.message)
+            })
+    }
+
     const navItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/instructors'>Instructors</Link></li>
         <li><Link to='/classes'>Classes</Link></li>
-        <li><Link>Dashboard</Link></li>
-        <li><Link>Profile picture</Link></li>
-        <li><Link to='/login'>Login</Link></li>
-        
+        <li><Link to='/test'>test</Link></li>
+
+        {
+            user ? <>
+                <li><Link>Dashboard</Link></li>
+               
+                <li><button onClick={handleLogout}>Logout</button></li>
+                <li><div className="avatar">
+                    <div className="h-10 w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                        <img src={user.photoURL} />
+                    </div>
+                </div></li>
+                
+                </> : <>
+
+                <li><Link to='/login'>Login</Link></li>
+            </>
+        }
+
     </>
     return (
         <div className="navbar bg-base-100 z-10 bg-opacity-60 fixed">
@@ -27,16 +58,16 @@ const Navbar = () => {
                     <h2 className='text-xl w-full font-semibold '>FSA-Sports</h2>
                 </div>
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-center hidden lg:flex items-center">
                 <ul className="menu font-semibold menu-horizontal px-1">
-                
+
                     {navItems}
-                 
+
                 </ul>
             </div>
-            <div className="navbar-end">
+            {/* <div className="navbar-end">
                 <a className="btn">Button</a>
-            </div>
+            </div> */}
         </div>
     );
 };

@@ -1,13 +1,61 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { AuthContext } from '../../Providers/AuthProvider';
+import { toast } from 'react-hot-toast';
+import { TbFidgetSpinner } from 'react-icons/tb';
+import SocialLogin from '../../Shared/SocialLogin';
 
 const Registration = () => {
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = (data,errors) => {
-        console.log(data,errors)
+    const { createUser, updateUserProfile, loading, setLoading, googleSignIn } = useContext(AuthContext);
+    const [error, setError] = useState('')
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
+    const navigate = useNavigate()
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
+    const onSubmit = (data, errors) => {
+        setError('')
+        console.log(data, errors)
+        if (data.password === data.confirmPassword) {
+            createUser(data.email, data.password)
+                .then(result => {
+                    const loggedUser = result.user;
+                    updateUserProfile(data.name, data.photoURL)
+                        .then(() => {
+                            toast.success('Sign Up Success')
+
+                            navigate(from, { replace: true })
+                            console.log('Updated', loggedUser)
+                            setError('')
+
+                        }).catch((err) => {
+                            // An error occurred
+                            // ...
+                            toast.error(err.message)
+                            setLoading(false)
+                        });
+
+
+                })
+                .catch(err => {
+                    toast.error(err.message)
+                    console.log(err)
+                    setLoading(false)
+                })
+
+
+
+        } else {
+            setError('Confirm password not match')
+        }
+
     };
+
+ 
 
     return (
         <div>
@@ -34,9 +82,11 @@ const Registration = () => {
                                     <input
                                         type="text"
                                         name="name"
-                                        {...register("name" , { required: true })}
+                                        {...register("name", { required: true })}
+
                                         className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                     />
+                                    {errors.name && <span>Name is required</span>}
                                 </div>
                             </div>
                             <div className="mt-4">
@@ -50,9 +100,27 @@ const Registration = () => {
                                     <input
                                         type="email"
                                         name="email"
-                                        {...register("email" , { required: true })}
+                                        {...register("email", { required: true })}
                                         className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                     />
+                                    {errors.email && <span>Email is required</span>}
+                                </div>
+                            </div>
+                            <div className="mt-4">
+                                <label
+                                    htmlFor="email"
+                                    className="block text-sm font-medium text-gray-700 undefined"
+                                >
+                                    Photo URL
+                                </label>
+                                <div className="flex flex-col items-start">
+                                    <input
+                                        type="text"
+
+                                        {...register("photoURL", { required: true })}
+                                        className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                    />
+                                    {errors.photoURL && <span>photoURL is required</span>}
                                 </div>
                             </div>
                             <div className="mt-4">
@@ -65,10 +133,11 @@ const Registration = () => {
                                 <div className="flex flex-col items-start">
                                     <input
                                         type="password"
-                                        {...register("password" , { required: true })}
+                                        {...register("password", { pattern: /^(?=.*[!@#$%^&*])(?=.*[A-Z]).{6,}$/ })}
                                         name="password"
                                         className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                     />
+                                    {errors.password && <span>Please Provide a password and at least 6 characters long and 1 capital letter and 1 Special character </span>}
                                 </div>
                             </div>
                             <div className="mt-4">
@@ -81,9 +150,11 @@ const Registration = () => {
                                 <div className="flex flex-col items-start">
                                     <input
                                         type="password"
-                                        {...register("confirmPassword" ,{ required: true } )}
+                                        {...register("confirmPassword",)}
                                         className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                     />
+                                    {/* // {errors.confirmPassword ? <span>Confirm Password is required</span>} */}
+                                    {error && <span>{error}</span>}
                                 </div>
                             </div>
                             <a
@@ -93,9 +164,9 @@ const Registration = () => {
                                 Forget Password?
                             </a>
                             <div className="flex items-center mt-4">
-                                <input type='submit' value={'Register'} className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
-                                    
-                                </input >
+                                <button type='submit' className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
+                                    {loading ? <TbFidgetSpinner className='m-auto animate-spin'></TbFidgetSpinner> : 'Register'}
+                                </button >
                             </div>
                         </form>
                         <div className="mt-4 text-grey-600">
@@ -111,8 +182,9 @@ const Registration = () => {
                             <p className="px-3 ">OR</p>
                             <hr className="w-full" />
                         </div>
-                        <div className="my-6 space-y-2">
+                        {/* <div className="my-6 space-y-2">
                             <button
+                                onClick={handleGoogleSignIn}
                                 aria-label="Login with Google"
                                 type="button"
                                 className="flex items-center justify-center w-full p-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
@@ -140,7 +212,8 @@ const Registration = () => {
                                 </svg>
                                 <p>Login with GitHub</p>
                             </button>
-                        </div>
+                        </div> */}
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
