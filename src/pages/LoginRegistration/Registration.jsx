@@ -5,6 +5,7 @@ import { AuthContext } from '../../Providers/AuthProvider';
 import { toast } from 'react-hot-toast';
 import { TbFidgetSpinner } from 'react-icons/tb';
 import SocialLogin from '../../Shared/SocialLogin';
+import storeUser from '../../api/auth';
 
 const Registration = () => {
 
@@ -27,7 +28,7 @@ const Registration = () => {
                     updateUserProfile(data.name, data.photoURL)
                         .then(() => {
                             toast.success('Sign Up Success')
-
+                            storeUser(loggedUser)
                             navigate(from, { replace: true })
                             console.log('Updated', loggedUser)
                             setError('')

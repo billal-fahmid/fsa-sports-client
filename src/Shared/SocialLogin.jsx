@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import { toast } from 'react-hot-toast';
 import { useLocation, useNavigate } from 'react-router-dom';
+import storeUser from '../api/auth';
 
 const SocialLogin = () => {
     
@@ -16,6 +17,7 @@ const SocialLogin = () => {
             .then(result => {
                 const loggedUser = result.user;
                 toast.success('Sign Up Success')
+                storeUser(loggedUser)
                 navigate(from, {replace:true})
                 console.log(loggedUser)
 
