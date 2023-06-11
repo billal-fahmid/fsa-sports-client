@@ -1,7 +1,7 @@
 [
     {
-      "id": 1,
-      "image": "image1.jpg",
+ 
+      "image": "https://i.ibb.co/c837hdF/young-basketball-player-shoot.jpg",
       "name": "Basketball Training",
       "instructorName": "John Smith",
       "instructorEmail": "john.smith@example.com",
@@ -9,8 +9,8 @@
       "price": 50.00
     },
     {
-      "id": 2,
-      "image": "image2.jpg",
+  
+      "image": "https://i.ibb.co/c837hdF/young-basketball-player-shoot.jpg",
       "name": "Yoga for Flexibility",
       "instructorName": "Jane Doe",
       "instructorEmail": "jane.doe@example.com",
@@ -18,8 +18,8 @@
       "price": 30.00
     },
     {
-      "id": 3,
-      "image": "image3.jpg",
+   
+      "image": "https://i.ibb.co/J2s1yDS/dark-gym-ring-experienced-trainer-young-woman-has-kick-boxing-fight.jpg",
       "name": "Kickboxing Workout",
       "instructorName": "Michael Johnson",
       "instructorEmail": "michael.johnson@example.com",
@@ -27,8 +27,8 @@
       "price": 45.00
     },
     {
-      "id": 4,
-      "image": "image4.jpg",
+   
+      "image":"https://i.ibb.co/L8xqqSs/coach-teaching-kid-indoor-swimming-pool-how-swim-dive-swimming-lesson-kids-development.jpg",
       "name": "Swimming Lessons",
       "instructorName": "Sarah Thompson",
       "instructorEmail": "sarah.thompson@example.com",
@@ -36,8 +36,8 @@
       "price": 60.00
     },
     {
-      "id": 5,
-      "image": "image5.jpg",
+     
+      "image": "https://i.ibb.co/F5Vyp9h/tennis-paddles-balls-arrangement.jpg",
       "name": "Tennis Clinic",
       "instructorName": "David Wilson",
       "instructorEmail": "david.wilson@example.com",
@@ -45,8 +45,8 @@
       "price": 35.00
     },
     {
-      "id": 6,
-      "image": "image6.jpg",
+    
+      "image": "https://i.ibb.co/DGFTWVz/sports-teacher-with-her-students.jpg",
       "name": "Golf Basics",
       "instructorName": "Emily Anderson",
       "instructorEmail": "emily.anderson@example.com",
@@ -54,4 +54,4 @@
       "price": 40.00
     }
   ]
-  
+ 

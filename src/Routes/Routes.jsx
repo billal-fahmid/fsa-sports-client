@@ -7,6 +7,11 @@ import Login from "../pages/LoginRegistration/Login";
 import Registration from "../pages/LoginRegistration/Registration";
 import Test from "../pages/Test";
 import PrivateRoute from "./PrivateRoute";
+import DashboardLayout from "../layouts/DashboardLayout";
+import SelectedClasses from "../components/Dashboard/Student/SelectedClasses";
+import MyEnrolledClasses from "../components/Dashboard/Student/MyEnrolledClasses";
+import Payment from "../components/Dashboard/Student/Payment";
+import PaymentHistory from "../components/Dashboard/Student/PaymentHistory";
 
 
 const router = createBrowserRouter([
@@ -40,6 +45,28 @@ const router = createBrowserRouter([
         }
       ]
     },
+    {
+        path:'/dashboard',
+        element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        children:[
+            {
+                path:'/dashboard/selectedclasses',
+                element:<SelectedClasses></SelectedClasses>
+            },
+            {
+                path:'/dashboard/enrolledclasses',
+                element:<MyEnrolledClasses></MyEnrolledClasses>
+            },
+            {
+                path:'/dashboard/payment',
+                element:<Payment></Payment>
+            },
+            {
+                path:'paymenthistory',
+                element:<PaymentHistory></PaymentHistory>
+            }
+        ]
+    }
   ]);
 
 
