@@ -2,13 +2,62 @@ import React, { useEffect, useState } from 'react';
 import PopularClasses from '../Home/PopularClasses/PopularClasses';
 import SectionTitle from '../../components/SectionTitle';
 import useClasses from '../../Hooks/useClasses';
+import useAuth from '../../Hooks/useAuth';
+import Swal from 'sweetalert2';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Classes = () => {
 
+    const {user} = useAuth()
+
     const [classes, loading] = useClasses()
+    const location = useLocation()
+    const navigate = useNavigate()
 
-    const handleSelect = (_id) => {
-
+    const handleSelect = (cla) => {
+        console.log(cla)
+        const {_id , availableSeats,image,instructorEmail,instructorName, name,price} = cla;
+        const selectedItem = {selectedCourse :_id, availableSeats,image,instructorName,instructorEmail,name, price, email:user?.email}
+        if(user && user.email){
+            fetch(`http://localhost:5000/selectedclasses` , {
+                method:'POST',
+                headers:{
+                    'content-type' :'application/json'
+                },
+                body:JSON.stringify(selectedItem)
+            })
+            .then(res => res.json())
+            .then(data =>{
+                if(data.insertedId){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Your Class has been Selected',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                }
+            })
+        }else{
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Please Login to select the class!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Login Now!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                //   Swal.fire(
+                //     'Deleted!',
+                //     'Your file has been deleted.',
+                //     'success'
+                //   )
+                navigate('/login' ,{state:{from:location}})
+                }
+              })
+        }
     }
 
     return (
@@ -27,7 +76,7 @@ const Classes = () => {
                                 <p>Price : {cla.price}</p>
                             </div>
                             <div className="card-actions justify-end">
-                                <button className="btn btn-primary">Select </button>
+                                <button onClick={()=>handleSelect(cla)} className="btn btn-primary">Select </button>
                             </div>
                         </div>
                     </div>)
