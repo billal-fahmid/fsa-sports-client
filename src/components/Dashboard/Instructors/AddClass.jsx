@@ -28,7 +28,8 @@ const AddClass = () => {
             if(imageData.success){
                 const imgURL = imageData.data.display_url;
                 const {name,price,instructorName,instructorEmail,availableSeats} = data;
-                const newClass = {name,price:parseFloat(price), availableSeats:parseInt(availableSeats) ,image:imgURL,instructorName,instructorEmail};
+                const newClass = {name,price:parseFloat(price), availableSeats:parseInt(availableSeats) ,image:imgURL,instructorName,instructorEmail,status:'pending',enrolled:0};
+
                 axiosSecure.post('/classes' , newClass)
                 .then(data=>{
                     console.log('add database' ,data)
@@ -37,7 +38,7 @@ const AddClass = () => {
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',
-                            title: 'Add new Item successfully',
+                            title: 'Your class Added Successfully',
                             showConfirmButton: false,
                             timer: 1500
                           })

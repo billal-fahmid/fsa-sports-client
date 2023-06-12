@@ -3,8 +3,10 @@ import { Link, Outlet } from 'react-router-dom';
 import useSelectItem from '../Hooks/useSelectItem';
 import Navbar from '../Shared/Navbar';
 import Footer from '../Shared/Footer';
+import useAuth from '../Hooks/useAuth';
 
 const DashboardLayout = () => {
+    const {user} = useAuth()
     const status = 'instructor';
     const [selectedClasses] = useSelectItem() ;
 
@@ -24,8 +26,11 @@ const DashboardLayout = () => {
             </div>
             <div className="drawer-side pt-24 lg:pt-0">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+
+            
                 <ul className="menu p-4 w-80 font-semibold text-indigo-600 h-full bg-base-200 ">
                     {/* Sidebar content here */}
+                    <h2 className='text-xl font-bold text-orange-400'>Welcome , <span className='text-2xl'>{user.displayName}</span></h2>
 
 
 
