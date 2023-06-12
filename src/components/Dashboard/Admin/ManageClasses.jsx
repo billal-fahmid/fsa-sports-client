@@ -2,7 +2,8 @@ import React from 'react';
 import useClasses from '../../../Hooks/useClasses';
 
 const ManageClasses = () => {
-    const [classes, loading] = useClasses()
+    const [classes, loading] = useClasses();
+    
     return (
         <div className='w-full h-full p-10 mb-10'>
             <h2 className='text-3xl font-semibold text-violet-600 text-center'>Manage All Classes</h2>

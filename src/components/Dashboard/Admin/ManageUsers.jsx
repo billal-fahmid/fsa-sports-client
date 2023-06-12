@@ -1,12 +1,22 @@
 import React from 'react';
 import useLoadUsers from '../../../Hooks/useLoadUsers';
+import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 
 const ManageUsers = () => {
     const [users, isUsersLoading] = useLoadUsers()
     console.log(users)
-    const makeInstructor = ()=>{
+    const [axiosSecure] = useAxiosSecure()
+
+    const makeInstructor = (_id)=>{
+        axiosSecure.patch(`/users/instructor/${_id}`)
+        .then(data=>{
+            console.log(data)
+        })
+    }
+    const makeAdmin=()=>{
 
     }
+
     return (
         <div className='w-full h-full p-10 mb-10'>
             <h2 className='text-3xl font-semibold text-violet-600 text-center'>Manage All Users</h2>
@@ -31,10 +41,10 @@ const ManageUsers = () => {
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
                                     <td>
-                                        <button className="btn btn-outline btn-success btn-sm">Instructor</button>
+                                        <button disabled={user.status==='instructor'} onClick={()=>makeInstructor(user._id)} className="btn btn-outline btn-success btn-sm">Instructor</button>
                                     </td>
                                     <td>
-                                        <button className="btn btn-outline btn-sm btn-warning">Admin</button>
+                                        <button disabled={user.status==='admin'} className="btn btn-outline btn-sm btn-warning">Admin</button>
                                     </td>
                                     <td>
                                     <button className="btn btn-outline btn-sm btn-error">X</button>
