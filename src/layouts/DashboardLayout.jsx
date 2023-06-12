@@ -4,10 +4,13 @@ import useSelectItem from '../Hooks/useSelectItem';
 import Navbar from '../Shared/Navbar';
 import Footer from '../Shared/Footer';
 import useAuth from '../Hooks/useAuth';
+import useUsers from '../Hooks/useUsers';
 
 const DashboardLayout = () => {
     const {user} = useAuth()
-    const status = 'instructor';
+    // const status = 'instructor';
+    const [status] = useUsers()
+    console.log(status)
     const [selectedClasses] = useSelectItem() ;
 
     return (

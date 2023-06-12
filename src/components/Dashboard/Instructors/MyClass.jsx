@@ -49,7 +49,7 @@ const MyClass = () => {
                                         <span className="badge badge-ghost badge-sm">{myCla.instructorEmail}</span>
                                     </td>
                                     <td className={`${myCla?.status == 'pending' ? "badge badge-secondary mt-6":''}`}>{myCla.status}</td>
-                                    <td >{myCla.enrolled}</td>
+                                    <td className='text-center'>{myCla.enrolled}</td>
                                     <th>
                                         <button className="btn btn-ghost btn-xs">Edit</button>
                                     </th>
