@@ -1,13 +1,51 @@
 import React from 'react';
 import useAuth from '../../../Hooks/useAuth';
 import { useForm } from "react-hook-form";
+import useAxiosSecure from '../../../Hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const AddClass = () => {
 
     const { user } = useAuth()
+
+    const [axiosSecure] = useAxiosSecure()
+
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => {
+    const image_hosting_url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_Image_Upload_Token}`
+
+    const onSubmit = (data,reset) => {
         console.log(data)
+        const formData =new FormData();
+        formData.append('image' , data.image[0])
+
+        fetch(image_hosting_url, {
+            method:'POST',
+            body:formData
+        })
+        .then(res => res.json())
+        .then(imageData =>{
+            console.log(imageData)
+            if(imageData.success){
+                const imgURL = imageData.data.display_url;
+                const {name,price,instructorName,instructorEmail,availableSeats} = data;
+                const newClass = {name,price:parseFloat(price), availableSeats:parseInt(availableSeats) ,image:imgURL,instructorName,instructorEmail};
+                axiosSecure.post('/classes' , newClass)
+                .then(data=>{
+                    console.log('add database' ,data)
+                    if(data.data.insertedId){
+                        // reset()
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Add new Item successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                          })
+                    }
+                })
+            }
+        })
+
     };
 
     return (
