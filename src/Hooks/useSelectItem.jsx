@@ -12,7 +12,7 @@ const useSelectItem=()=>{
         queryKey: ['selectedclasses' , user?.email],
         enabled:!loading,
         queryFn: async ()=>{
-            const res = await axiosSecure(`http://localhost:5000/selectedclasses?email=${user?.email}`)
+            const res = await axiosSecure(`/selectedclasses?email=${user?.email}`)
             console.log('from axios se' , res)
             return res.data
         },
