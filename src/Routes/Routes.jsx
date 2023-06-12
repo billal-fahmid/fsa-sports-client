@@ -12,6 +12,10 @@ import SelectedClasses from "../components/Dashboard/Student/SelectedClasses";
 import MyEnrolledClasses from "../components/Dashboard/Student/MyEnrolledClasses";
 import Payment from "../components/Dashboard/Student/Payment";
 import PaymentHistory from "../components/Dashboard/Student/PaymentHistory";
+import AddClass from "../components/Dashboard/Instructors/AddClass";
+import MyClass from "../components/Dashboard/Instructors/MyClass";
+import ManageClasses from "../components/Dashboard/Admin/ManageClasses";
+import ManageUsers from "../components/Dashboard/Admin/ManageUsers";
 
 
 const router = createBrowserRouter([
@@ -49,6 +53,7 @@ const router = createBrowserRouter([
         path:'/dashboard',
         element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children:[
+            // student dashboard
             {
                 path:'/dashboard/selectedclasses',
                 element:<SelectedClasses></SelectedClasses>
@@ -62,8 +67,27 @@ const router = createBrowserRouter([
                 element:<Payment></Payment>
             },
             {
-                path:'paymenthistory',
+                path:'/dashboard/paymenthistory',
                 element:<PaymentHistory></PaymentHistory>
+            }
+            // instructors routes
+            ,{
+                path:'/dashboard/addclass',
+                element:<AddClass></AddClass>
+            },
+            {
+                path:'/dashboard/myclass',
+                element:<MyClass></MyClass>
+            }
+            // admin dashboard 
+            ,
+            {
+                path:'/dashboard/manageclasses',
+                element:<ManageClasses></ManageClasses>
+            },
+            {
+                path:'/dashboard/manageusers',
+                element:<ManageUsers></ManageUsers>
             }
         ]
     }

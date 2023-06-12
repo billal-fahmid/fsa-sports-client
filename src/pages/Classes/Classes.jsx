@@ -5,10 +5,12 @@ import useClasses from '../../Hooks/useClasses';
 import useAuth from '../../Hooks/useAuth';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
+import useSelectItem from '../../Hooks/useSelectItem';
 
 const Classes = () => {
 
     const {user} = useAuth()
+    const [selectedClasses,refetch] = useSelectItem()
 
     const [classes, loading] = useClasses()
     const location = useLocation()
@@ -16,6 +18,12 @@ const Classes = () => {
 
     const handleSelect = (cla) => {
         console.log(cla)
+
+       const alreadySelected= selectedClasses.find(item=> item.selectedCourse=== cla._id)
+        if(alreadySelected){
+            return Swal.fire('Class already Selected')
+        }
+
         const {_id , availableSeats,image,instructorEmail,instructorName, name,price} = cla;
         const selectedItem = {selectedCourse :_id, availableSeats,image,instructorName,instructorEmail,name, price, email:user?.email}
         if(user && user.email){
@@ -29,6 +37,7 @@ const Classes = () => {
             .then(res => res.json())
             .then(data =>{
                 if(data.insertedId){
+                    refetch()
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
