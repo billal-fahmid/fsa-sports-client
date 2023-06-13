@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useSelectItem from '../../Hooks/useSelectItem';
 import useApprovedClasses from '../../Hooks/useApprovedClasses';
+import useUsers from '../../Hooks/useUsers';
 
 const Classes = () => {
 
@@ -17,6 +18,10 @@ const Classes = () => {
     // const [classes,] = useClasses()
     const location = useLocation()
     const navigate = useNavigate()
+
+    const [status] = useUsers();
+    // const status ='student'
+
 
     const handleSelect = (cla) => {
         console.log(cla)
@@ -77,6 +82,7 @@ const Classes = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-2 pt-10 lg:grid-cols-3 gap-6'>
                 {
+                    
                     approvedClasses?.map(cla => <div key={cla._id} className="card w-full bg-base-100 shadow-xl">
                         <figure><img src={cla.image} alt="Shoes" /></figure>
                         <div className="card-body">
@@ -87,7 +93,7 @@ const Classes = () => {
                                 <p>Price : {cla.price}</p>
                             </div>
                             <div className="card-actions justify-end">
-                                <button onClick={()=>handleSelect(cla)} className="btn btn-primary">Select </button>
+                                <button disabled={status==='admin' || status=== 'instructor' || cla.availableSeats ===0} onClick={()=>handleSelect(cla)} className="btn btn-primary">Select </button>
                             </div>
                         </div>
                     </div>)
