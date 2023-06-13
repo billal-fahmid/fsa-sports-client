@@ -16,6 +16,6 @@ const useLoadUsers=()=>{
             return res.data
         }
     })
-    return [users,isUsersLoading]
+    return [users,refetch,isUsersLoading]
 }
 export default useLoadUsers
