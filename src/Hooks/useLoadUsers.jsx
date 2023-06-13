@@ -7,7 +7,7 @@ const useLoadUsers=()=>{
     const {user,loading} = useAuth()
     const [axiosSecure]= useAxiosSecure()
 
-    const {data: users=[], isLoading: isUsersLoading} = useQuery({
+    const {data: users=[], refetch,isLoading: isUsersLoading} = useQuery({
         enabled:!loading,
         queryKey:['users',user?.email],
         queryFn:async()=>{
