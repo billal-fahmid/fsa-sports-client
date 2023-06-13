@@ -17,6 +17,7 @@ import MyClass from "../components/Dashboard/Instructors/MyClass";
 import ManageClasses from "../components/Dashboard/Admin/ManageClasses";
 import ManageUsers from "../components/Dashboard/Admin/ManageUsers";
 import Feedback from "../components/Dashboard/Admin/Feedback";
+import UpdateClass from "../components/Dashboard/Instructors/updateClass";
 
 
 const router = createBrowserRouter([
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
             {
                 path:'/dashboard/myclass',
                 element:<MyClass></MyClass>
+            },
+            {
+                path:'/dashboard/updateclass/:id',
+                element:<UpdateClass></UpdateClass>
             }
             // admin dashboard 
             ,

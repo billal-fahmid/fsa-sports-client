@@ -1,5 +1,6 @@
 import React from 'react';
 import useMyClasses from '../../../Hooks/useMyClasses';
+import { Link } from 'react-router-dom';
 
 
 const MyClass = () => {
@@ -19,11 +20,12 @@ const MyClass = () => {
                                 <th>#</th>
                                 <th>Class</th>
                                 <th>Instructor Info</th>
+                                <th>Price</th>
                                 <th>Status</th>
-                                <th>Total Enrolled</th>
+                                <th> Enrolled</th>
                                 <th>Feedback</th>
                                 <th>Update</th>
-                                <th>Feedback</th>
+                          
                             </tr>
                         </thead>
                         <tbody>
@@ -49,15 +51,14 @@ const MyClass = () => {
                                         <br />
                                         <span className="badge badge-ghost badge-sm">{myCla.instructorEmail}</span>
                                     </td>
+                                    <td >$ {myCla.price}</td>
                                     <td className={`${myCla?.status == 'pending' ? "badge badge-secondary mt-6":''}`}>{myCla.status}</td>
                                     <td className='text-center'>{myCla.enrolled}</td>
                                     <td className='text-center'>{myCla.feedback}</td>
                                     <th>
-                                        <button className="btn btn-ghost btn-xs">Edit</button>
+                                        <Link to={`/dashboard/updateclass/${myCla._id}`} className="btn btn-ghost btn-xs">Edit</Link>
                                     </th>
-                                    <th>
-                                    <button className="btn btn-ghost btn-xs">See</button>
-                                    </th>
+                                    
                                 </tr>)
                             }
 
