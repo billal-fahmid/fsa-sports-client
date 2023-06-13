@@ -12,7 +12,7 @@ const Classes = () => {
     const {user} = useAuth()
     const [selectedClasses,refetch] = useSelectItem()
 
-    const [classes, loading] = useClasses()
+    const [classes,] = useClasses()
     const location = useLocation()
     const navigate = useNavigate()
 
