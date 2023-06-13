@@ -9,7 +9,7 @@ const useApprovedClasses =()=>{
         queryKey: ['approvedClasses'],
       
         queryFn: async ()=>{
-            const res = await axiosSecure(`/approvedClasses`)
+            const res = await axiosSecure(`/classes/approvedClasses`)
             console.log('from axios se' , res)
             return res.data
         },

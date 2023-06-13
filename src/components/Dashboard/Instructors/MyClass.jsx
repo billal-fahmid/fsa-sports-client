@@ -21,6 +21,7 @@ const MyClass = () => {
                                 <th>Instructor Info</th>
                                 <th>Status</th>
                                 <th>Total Enrolled</th>
+                                <th>Feedback</th>
                                 <th>Update</th>
                                 <th>Feedback</th>
                             </tr>
@@ -50,6 +51,7 @@ const MyClass = () => {
                                     </td>
                                     <td className={`${myCla?.status == 'pending' ? "badge badge-secondary mt-6":''}`}>{myCla.status}</td>
                                     <td className='text-center'>{myCla.enrolled}</td>
+                                    <td className='text-center'>{myCla.feedback}</td>
                                     <th>
                                         <button className="btn btn-ghost btn-xs">Edit</button>
                                     </th>

@@ -6,13 +6,15 @@ import useAuth from '../../Hooks/useAuth';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useSelectItem from '../../Hooks/useSelectItem';
+import useApprovedClasses from '../../Hooks/useApprovedClasses';
 
 const Classes = () => {
 
     const {user} = useAuth()
     const [selectedClasses,refetch] = useSelectItem()
-
-    const [classes,] = useClasses()
+    // const [approvedClasses , ]
+    const [approvedClasses] = useApprovedClasses()
+    // const [classes,] = useClasses()
     const location = useLocation()
     const navigate = useNavigate()
 
@@ -75,7 +77,7 @@ const Classes = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-2 pt-10 lg:grid-cols-3 gap-6'>
                 {
-                    classes.map(cla => <div key={cla._id} className="card w-full bg-base-100 shadow-xl">
+                    approvedClasses?.map(cla => <div key={cla._id} className="card w-full bg-base-100 shadow-xl">
                         <figure><img src={cla.image} alt="Shoes" /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{cla.name}</h2>

@@ -2,6 +2,7 @@ import React from 'react';
 import useClasses from '../../../Hooks/useClasses';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const ManageClasses = () => {
     const [classes, refetch] = useClasses();
@@ -103,7 +104,7 @@ const ManageClasses = () => {
                                         <div className="btn-group btn-group-vertical gap-1">
                                             <button onClick={()=>handleApproved(cla._id)} className="btn btn-xs">Approved</button>
                                             <button onClick={()=>handleDenied(cla._id)} className="btn btn-xs">Denied</button>
-                                            <button className="btn btn-xs"> Feedback</button>
+                                            <Link to={`/dashboard/feedback/${cla._id}`} className="btn btn-xs"> Feedback</Link>
                                         </div>
                                     </th>
                                 </tr>)
