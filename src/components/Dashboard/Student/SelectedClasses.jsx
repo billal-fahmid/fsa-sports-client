@@ -67,7 +67,7 @@ const SelectedClasses = () => {
                                 <td>{item.instructorName}</td>
                                 <td>$ {item.price}</td>
                                 <td><button onClick={()=>handleDelete(item._id)} className="btn btn-outline btn-sm btn-warning">X</button></td>
-                                <td> <Link to='/dashboard/payment' className="btn btn-outline btn-sm btn-info">Pay Now</Link></td>
+                                <td> <Link to={`/dashboard/payment/${item._id}`} className="btn btn-outline btn-sm btn-info">Pay Now</Link></td>
 
 
                             </tr>)
