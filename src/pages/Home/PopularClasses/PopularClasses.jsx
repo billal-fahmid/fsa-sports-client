@@ -29,7 +29,7 @@ const PopularClasses = () => {
         const {_id , availableSeats,image,instructorEmail,instructorName, name,price} = cla;
         const selectedItem = {selectedCourse :_id, availableSeats,image,instructorName,instructorEmail,name, price, email:user?.email}
         if(user && user.email){
-            fetch(`http://localhost:5000/selectedclasses` , {
+            fetch(`https://server-rouge-gamma.vercel.app/selectedclasses` , {
                 method:'POST',
                 headers:{
                     'content-type' :'application/json'

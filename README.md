@@ -17,5 +17,5 @@
 4. For payment Stripe js.
 
 ###
-//TODO live link
-live site link : 
+
+live site link : https://assignment-12-fas-sports.web.app/

@@ -22,7 +22,7 @@ const SelectedClasses = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/selectedclasses/${_id}`, {
+                fetch(`https://server-rouge-gamma.vercel.app/selectedclasses/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

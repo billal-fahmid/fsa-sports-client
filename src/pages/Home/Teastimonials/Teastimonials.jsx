@@ -6,7 +6,7 @@ const Teastimonials = () => {
     const [reviews, setReview] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch('https://server-rouge-gamma.vercel.app/reviews')
             .then(res => res.json())
             .then(data => setReview(data))
     }, [])

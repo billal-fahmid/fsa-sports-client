@@ -41,7 +41,7 @@ const AuthProvider = ({ children }) => {
             setUser(LoggedInUser)
 
             if(LoggedInUser){
-                axios.post('http://localhost:5000/jwt' , {email:LoggedInUser.email})
+                axios.post('https://server-rouge-gamma.vercel.app/jwt' , {email:LoggedInUser.email})
                 .then(data => {
                     console.log(data.data.token)
                     localStorage.setItem('access-token' , data.data.token)

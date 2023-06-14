@@ -5,7 +5,7 @@ const storeUser =(user) =>{
         name:user.displayName,
         status:"student"
     }
-    fetch(`http://localhost:5000/users/${user?.email}`,{
+    fetch(`https://server-rouge-gamma.vercel.app/users/${user?.email}`,{
         method:'PUT',
         headers:{
             'content-type':'application/json'
