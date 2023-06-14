@@ -102,8 +102,8 @@ const ManageClasses = () => {
                                     </td>
                                     <th>
                                         <div className="btn-group btn-group-vertical gap-1">
-                                            <button onClick={()=>handleApproved(cla._id)} className="btn btn-xs">Approved</button>
-                                            <button onClick={()=>handleDenied(cla._id)} className="btn btn-xs">Denied</button>
+                                            <button disabled={cla.status !== 'pending'} onClick={()=>handleApproved(cla._id)} className="btn btn-xs">Approved</button>
+                                            <button disabled={cla.status !== 'pending'} onClick={()=>handleDenied(cla._id)} className="btn btn-xs">Denied</button>
                                             <Link to={`/dashboard/feedback/${cla._id}`} className="btn btn-xs"> Feedback</Link>
                                         </div>
                                     </th>
