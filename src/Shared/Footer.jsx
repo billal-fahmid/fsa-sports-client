@@ -42,7 +42,7 @@ const Footer = () => {
                         </label>
                         <label className="input-group">
                             <span>Email</span>
-                            <input type="text" placeholder="info@site.com" className="input input-bordered" />
+                            <input type="text" placeholder="info@site.com" className="input w-3/4 input-bordered" />
                         </label>
                     </div>
                 </div>

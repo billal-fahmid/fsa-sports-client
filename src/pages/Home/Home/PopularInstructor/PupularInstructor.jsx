@@ -14,7 +14,7 @@ const PupularInstructor = () => {
 
         <div className='grid grid-cols-1 md:grid-cols-2 pt-10 lg:grid-cols-3 gap-6'>
             {
-                instructors.slice(0,6)?.map(instructor => <motion.div whileHover={{ scale: .8 }} whileTap={{ scale: 0.8 }} className="card w-96 bg-base-100 shadow-xl">
+                instructors.slice(0,6)?.map(instructor => <motion.div whileHover={{ scale: .8 }} whileTap={{ scale: 0.8 }} className="card w-full bg-base-100 shadow-xl">
                     <figure className="px-10 pt-10">
                         <img src={instructor?.image} alt="Not Available" className="rounded-xl" />
                     </figure>
