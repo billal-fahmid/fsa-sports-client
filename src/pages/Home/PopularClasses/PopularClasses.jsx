@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import useSelectItem from '../../../Hooks/useSelectItem';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
+import { motion } from "framer-motion"
 // import useClasses from '../../../Hooks/useClasses';
 
 const PopularClasses = () => {
@@ -76,7 +77,8 @@ const PopularClasses = () => {
             <SectionTitle title={'Our Popular Classes'} subTitle={'Unleash Your Athletic Potential with Our Popular Classes'}></SectionTitle>
             <div className='grid grid-cols-1 md:grid-cols-2 pt-10 lg:grid-cols-3 gap-6'>
                 {
-                    approvedClasses.slice(0,6)?.map(cla => <div key={cla._id} className="card w-full bg-base-100 shadow-xl">
+                    approvedClasses.slice(0,6)?.map(cla => <motion.div key={cla._id} whileHover={{ scale: .8 }} whileTap={{ scale: 0.8 }}  className="card w-full bg-base-100 shadow-xl">
+                      
                         <figure><img src={cla.image} alt="Shoes" /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{cla.name}</h2>
@@ -91,7 +93,7 @@ const PopularClasses = () => {
                                 <button onClick={()=>handleSelect(cla)} disabled={status==='admin' || status=== 'instructor' || cla.availableSeats ===0} className="btn btn-primary">Select </button>
                             </div>
                         </div>
-                    </div>)
+                    </motion.div>)
                 }
             </div>
         </div>

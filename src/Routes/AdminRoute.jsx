@@ -7,7 +7,7 @@ const AdminRoute = ({children}) => {
 
     const [status,isStatusLoading] =useUsers();
     const {user,loading} = useAuth()
-    const location = useLocation();
+   
 
     if(loading || isStatusLoading){
         return <span className="loading my-auto mx-auto loading-bars loading-lg"></span>
@@ -16,7 +16,7 @@ const AdminRoute = ({children}) => {
         return children
     }
 
-    return <Navigate to='/' state={{from: location}} replace></Navigate>
+    return <Navigate to='/' ></Navigate>
 };
 
 export default AdminRoute;

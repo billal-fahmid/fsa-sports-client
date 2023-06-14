@@ -8,6 +8,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import useSelectItem from '../../Hooks/useSelectItem';
 import useApprovedClasses from '../../Hooks/useApprovedClasses';
 import useUsers from '../../Hooks/useUsers';
+import { motion } from "framer-motion"
 
 const Classes = () => {
 
@@ -83,7 +84,7 @@ const Classes = () => {
             <div className='grid grid-cols-1 md:grid-cols-2 pt-10 lg:grid-cols-3 gap-6'>
                 {
                     
-                    approvedClasses?.map(cla => <div key={cla._id} className="card w-full bg-base-100 shadow-xl">
+                    approvedClasses?.map(cla => <motion.div whileHover={{ scale: .8 }} whileTap={{ scale: 0.8 }} key={cla._id} className={`${cla.availableSeats===0?'bg-red-500' : "bg-base-100"} card w-full bg-base-100 shadow-xl`}>
                         <figure><img src={cla.image} alt="Shoes" /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{cla.name}</h2>
@@ -96,7 +97,7 @@ const Classes = () => {
                                 <button disabled={status==='admin' || status=== 'instructor' || cla.availableSeats ===0} onClick={()=>handleSelect(cla)} className="btn btn-primary">Select </button>
                             </div>
                         </div>
-                    </div>)
+                    </motion.div>)
                 }
             </div>
         </div>

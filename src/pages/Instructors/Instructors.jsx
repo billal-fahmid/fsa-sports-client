@@ -2,6 +2,7 @@ import React from 'react';
 import SectionTitle from '../../components/SectionTitle';
 import useInstructor from '../../Hooks/useInstructor';
 import useAuth from '../../Hooks/useAuth';
+import { motion } from "framer-motion"
 
 const Instructors = () => {
     const { user } = useAuth();
@@ -14,7 +15,7 @@ const Instructors = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-2 pt-10 lg:grid-cols-3 gap-6'>
                 {
-                    instructors?.map(instructor => <div className="card w-96 bg-base-100 shadow-xl">
+                    instructors?.map(instructor => <motion.div whileHover={{ scale: .8 }} whileTap={{ scale: 0.8 }} className="card w-96 bg-base-100 shadow-xl">
                         <figure className="px-10 pt-10">
                             <img src={instructor?.image} alt="Not Available" className="rounded-xl" />
                         </figure>
@@ -25,7 +26,7 @@ const Instructors = () => {
                                 <button className="btn btn-primary">See Class</button>
                             </div>
                         </div>
-                    </div>)
+                    </motion.div>)
                 }
             </div>
 

@@ -21,6 +21,7 @@ import UpdateClass from "../components/Dashboard/Instructors/updateClass";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import Welcome from "../components/Dashboard/Welcome";
 
 
 const router = createBrowserRouter([
@@ -57,7 +58,11 @@ const router = createBrowserRouter([
         element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         errorElement:<ErrorPage></ErrorPage>,
         children:[
-            // student dashboard
+            {
+                path:'/dashboard/',
+                element:<Welcome></Welcome>
+            }
+            ,
             {
                 path:'/dashboard/selectedclasses',
                 element:<SelectedClasses></SelectedClasses>

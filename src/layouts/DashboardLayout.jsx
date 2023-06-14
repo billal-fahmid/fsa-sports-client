@@ -5,6 +5,11 @@ import Navbar from '../Shared/Navbar';
 import Footer from '../Shared/Footer';
 import useAuth from '../Hooks/useAuth';
 import useUsers from '../Hooks/useUsers';
+import { BiSelectMultiple,  } from 'react-icons/bi';
+import { MdManageAccounts, MdPayments } from 'react-icons/md';
+import { IoMdCheckmarkCircle } from 'react-icons/io';
+import { GrAdd } from 'react-icons/gr';
+import { SiGoogleclassroom, SiGoogletagmanager } from 'react-icons/si';
 
 const DashboardLayout = () => {
     const {user} = useAuth()
@@ -38,22 +43,22 @@ const DashboardLayout = () => {
 
 
                     {
-                        status === 'student' && <>     <li><Link to='/dashboard/selectedclasses'>Selected Classes<div className="badge badge-secondary">+ {selectedClasses.length}</div>
+                        status === 'student' && <>     <li><Link to='/dashboard/selectedclasses'><BiSelectMultiple></BiSelectMultiple> Selected Classes<div className="badge badge-secondary">+ {selectedClasses.length}</div>
                         </Link></li>
-                            <li><Link to='/dashboard/enrolledclasses'>My Enrolled Classes</Link></li>
+                            <li><Link to='/dashboard/enrolledclasses'><IoMdCheckmarkCircle></IoMdCheckmarkCircle> Enrolled Classes</Link></li>
                             {/* <li><Link to='/dashboard/payment'>Payment</Link></li> */}
-                            <li><Link to='/dashboard/paymenthistory'>Payment History</Link></li> </>}
+                            <li><Link to='/dashboard/paymenthistory'><MdPayments></MdPayments> Payment History</Link></li> </>}
                     {
                         status === 'instructor' &&
 
-                        <>     <li><Link to='/dashboard/addclass'>Add Class</Link></li>
-                            <li><Link to='/dashboard/myclass'>My Class</Link></li> </>
+                        <>     <li><Link to='/dashboard/addclass'><GrAdd></GrAdd> Add Class</Link></li>
+                            <li><Link to='/dashboard/myclass'><SiGoogleclassroom></SiGoogleclassroom> My Class</Link></li> </>
                     }
                     {
                         status === 'admin' &&
 
-                        <>     <li><Link to='/dashboard/manageclasses'>Manage Classes</Link></li>
-                            <li><Link to='/dashboard/manageusers'>Manage Users</Link></li>
+                        <>     <li><Link to='/dashboard/manageclasses'><SiGoogletagmanager></SiGoogletagmanager> Manage Classes</Link></li>
+                            <li><Link to='/dashboard/manageusers'><MdManageAccounts></MdManageAccounts> Manage Users</Link></li>
                         </>
 
 

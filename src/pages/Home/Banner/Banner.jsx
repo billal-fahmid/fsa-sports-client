@@ -9,27 +9,27 @@ import slider5 from '../../../assets/banner-img/young-basketball-player-shoot.jp
 
 const Banner = () => {
     return (
-        <div>
+        <div className="">
               <Carousel>
-                <div>
-                    <img src={slider1} />
-                    <p className="legend">Legend 1</p>
+                <div className='relative '>
+                    <img className='opacity-70 ' src={slider2} />
+                    <p className=" absolute top-1/3 left-10 md:left-28 font-bold md:w-1/2 text-left leading-tight text-violet-800 bg-none md:text-7xl text-3xl">Ignite Your Passion, Master Your Game!</p>
                 </div>
-                <div>
-                    <img src={slider2} />
-                    <p className="legend">Legend 1</p>
+                <div className='relative'>
+                    <img className='opacity-70' src={slider1} />
+                    <p className=" absolute top-1/3 left-10 md:left-28 font-bold md:w-1/2 text-left leading-tight text-violet-900 bg-none md:text-7xl text-3xl">Where Champions are Made, Dreams Take Flight!</p>
                 </div>
-                <div>
-                    <img src={slider3} />
-                    <p className="legend">Legend 1</p>
+                <div className='relative'>
+                    <img className='opacity-70' src={slider3} />
+                    <p className=" absolute top-1/3 left-10 md:left-28 font-bold md:w-1/2 text-left leading-tight text-violet-800 bg-none md:text-7xl text-3xl">Elevate Your Skills, Embrace Victory!</p>
                 </div>
-                <div>
-                    <img src={slider4} />
-                    <p className="legend">Legend 1</p>
+                <div className='relative'>
+                    <img className='opacity-70' src={slider4} />
+                    <p className=" absolute top-1/3 left-10 md:left-28 font-bold md:w-1/2 text-left leading-tight text-violet-800 bg-none md:text-7xl text-3xl">Unleash Your Inner Athlete, Conquer the Field!</p>
                 </div>
-                <div>
-                    <img src={slider5} />
-                    <p className="legend">Legend 1</p>
+                <div className='relative'>
+                    <img className='opacity-70' src={slider5} />
+                    <p className=" absolute top-1/3 left-10 md:left-28 font-bold md:w-1/2 text-left leading-tight text-violet-700 bg-none md:text-7xl text-3xl">Train. Compete. Succeed!</p>
                 </div>
               
             </Carousel>
