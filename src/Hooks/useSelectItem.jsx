@@ -11,7 +11,8 @@ const useSelectItem=()=>{
 
     const { isLoading, data:selectedClasses=[],refetch } = useQuery({
         queryKey: ['selectedclasses' , user?.email],
-        enabled:!loading,
+           enabled:!!user?.email && !!localStorage.getItem('access-token'),
+        // enabled:!loading,
         queryFn: async ()=>{
             const res = await axiosSecure(`/selectedclasses?email=${user?.email}`)
             console.log('from axios se' , res)

@@ -9,7 +9,8 @@ const useMyClasses=()=>{
 
     const { isLoading, data:myClasses=[],refetch } = useQuery({
         queryKey: ['myclasses' , user?.email],
-        enabled:!loading,
+           enabled:!!user?.email && !!localStorage.getItem('access-token'),
+        // enabled:!loading,
         queryFn: async ()=>{
             const res = await axiosSecure(`/myclasses?email=${user?.email}`)
             console.log('from axios se' , res)

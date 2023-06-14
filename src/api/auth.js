@@ -1,5 +1,6 @@
 const storeUser =(user) =>{
     const currentUser ={
+        image:user.photoURL,
         email:user.email,
         name:user.displayName,
         status:"student"

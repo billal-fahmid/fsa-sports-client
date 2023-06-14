@@ -8,7 +8,8 @@ const useUsers=()=>{
     const [axiosSecure]= useAxiosSecure()
 
     const {data: status="", isLoading: isStatusLoading} = useQuery({
-        enabled:!loading,
+           enabled:!!user?.email && !!localStorage.getItem('access-token'),
+        // enabled:!loading,
         queryKey:['status',user?.email],
         queryFn:async()=>{
             const res = await axiosSecure.get(`/users/admin/${user?.email}`)

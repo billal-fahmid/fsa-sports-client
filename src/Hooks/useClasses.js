@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "./useAxiosSecure";
+import useAuth from "./useAuth";
 
 const useClasses =()=>{
     // const [classes, setClasses] = useState([]);
@@ -16,10 +17,12 @@ const useClasses =()=>{
     // }, [])
     // console.log(classes);
     // return [classes , loading]
+    const {loading ,user} =useAuth()
     const [axiosSecure] = useAxiosSecure();
     const { isLoading, data:classes=[],refetch } = useQuery({
         queryKey: ['classes'],
-      
+           enabled:!!user?.email && !!localStorage.getItem('access-token'),
+        // enabled:loading,
         queryFn: async ()=>{
             const res = await axiosSecure(`/classes`)
             console.log('from axios se' , res)

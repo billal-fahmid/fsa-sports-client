@@ -20,12 +20,14 @@ import Feedback from "../components/Dashboard/Admin/Feedback";
 import UpdateClass from "../components/Dashboard/Instructors/updateClass";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
             path:'/',
@@ -47,15 +49,13 @@ const router = createBrowserRouter([
             path:'/register',
             element:<Registration></Registration>
         },
-        {
-            path:'/test',
-            element:<PrivateRoute><Test></Test></PrivateRoute>
-        }
+       
       ]
     },
     {
         path:'/dashboard',
         element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        errorElement:<ErrorPage></ErrorPage>,
         children:[
             // student dashboard
             {

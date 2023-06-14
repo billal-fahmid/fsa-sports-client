@@ -1,24 +1,24 @@
 import { useQuery } from "@tanstack/react-query";
-import useAuth from "./useAuth";
 import useAxiosSecure from "./useAxiosSecure";
+import useAuth from "./useAuth";
 
-const useEnrolled =()=>{
-   const {user,loading} =useAuth()
+const useInstructor =()=>{
+    const {loading,user} = useAuth()
     const [axiosSecure] = useAxiosSecure();
-    const { isLoading, data:enrolledClasses=[],refetch } = useQuery({
+    const {  data:instructors=[] } = useQuery({
         queryKey: ['classes'],
            enabled:!!user?.email && !!localStorage.getItem('access-token'),
         // enabled:loading,
         queryFn: async ()=>{
-            const res = await axiosSecure(`/enrolled/${user?.email}`)
+            const res = await axiosSecure('/user/instructor')
             console.log('from axios se' , res)
             return res.data
         },
         
       })
   
-      return [enrolledClasses ,refetch, isLoading]
+      return [instructors ]
 
 }
 
-export default useEnrolled
+export default useInstructor

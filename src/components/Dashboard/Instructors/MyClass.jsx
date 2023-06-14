@@ -6,10 +6,18 @@ import { Link } from 'react-router-dom';
 const MyClass = () => {
 
     const [myClasses, refetch, isLoading] = useMyClasses()
+    
+
+  
+
+    // ToDo:
+    const totalStudent = myClasses.reduce((sum, cla) =>cla.enrolled+ sum , 0);
+
 
     return (
         <div className='w-full h-full p-10 mb-10'>
             <h2 className='text-3xl font-semibold text-violet-600 text-center'>Your Classes</h2>
+            <p>{totalStudent}</p>
             <div>
 
                 <div className="overflow-x-auto overflow-scroll">
