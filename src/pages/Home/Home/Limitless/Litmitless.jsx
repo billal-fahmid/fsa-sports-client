@@ -4,7 +4,7 @@ import siteImage from '../../../../assets/banner-img/bg-18.jpg'
 const Litmitless = () => {
     return (
         <div className='py-20'>
-            <div className='flex w-full gap-20'>
+            <div className='flex md:flex-row flex-col  w-full gap-20'>
                 <div className='text-right lg:w-1/2 w-full flex flex-col justify-center gap-6'>
                     <h2 className='text-4xl font-bold text-indigo-600 '>Limitless learning, more <br /> possibilities</h2>
                     <p className='text-[16px]'>ALL FSA SCHOOL, ALL THE TIME</p>

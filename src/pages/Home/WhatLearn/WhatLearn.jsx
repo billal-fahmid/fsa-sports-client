@@ -50,7 +50,7 @@ const WhatLearn = () => {
 
                     <p className='text-2xl'> .....</p>
                 </Swiper>
-                <div className='flex justify-around mt-10' ref={ref}>
+                <div className='flex md:flex-row flex-col justify-around mt-10' ref={ref}>
                     <div className='text-gray-500 text-center'>
                         <h2 className='text-7xl'>
                             {
