@@ -87,7 +87,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className='flex items-center py-1 justify-between'>
-                    <img className='h-16 w-16' src='https://www.logomyway.com/logos_new/25473/Functional_Sports_Academy_1_358857187133.png' alt="" />
+                    <img className='h-12 w-12 mr-4' src='https://i.ibb.co/2S7T24F/download.jpg' alt="" />
                     <h2 className='text-xl w-full font-semibold '>FSA-Sports</h2>
                 </div>
             </div>

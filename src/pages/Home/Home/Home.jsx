@@ -5,6 +5,7 @@ import PupularInstructor from './PopularInstructor/PupularInstructor';
 import Teastimonials from '../Teastimonials/Teastimonials';
 import Litmitless from './Limitless/Litmitless';
 import WhatLearn from '../WhatLearn/WhatLearn';
+import Experiance from './Experiance/Experiance';
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
             <PopularClasses></PopularClasses>
             <WhatLearn></WhatLearn>
             <PupularInstructor></PupularInstructor>
+            <Experiance></Experiance>
             <Teastimonials></Teastimonials>
         </div>
     );

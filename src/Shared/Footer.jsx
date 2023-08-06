@@ -6,7 +6,7 @@ const Footer = () => {
         <div className='bg-base-200 lg:px-14 '>
             <footer className="footer p-10  text-base-content">
                 <div>
-                    <img className='h-14' src="https://www.logomyway.com/logos_new/25473/Functional_Sports_Academy_1_358857187133.png" alt="" />
+                    <img className='h-12 w-12' src="https://i.ibb.co/2S7T24F/download.jpg" alt="" />
                     <p>FSA SPORTS <br />Providing Fun With learn since 1992</p>
                 </div>
                 <div>
