@@ -6,6 +6,7 @@ import Teastimonials from '../Teastimonials/Teastimonials';
 import Litmitless from './Limitless/Litmitless';
 import WhatLearn from '../WhatLearn/WhatLearn';
 import Experiance from './Experiance/Experiance';
+import OurEvents from '../OurEvents/OurEvents';
 
 const Home = () => {
     return (
@@ -16,6 +17,7 @@ const Home = () => {
             <WhatLearn></WhatLearn>
             <PupularInstructor></PupularInstructor>
             <Experiance></Experiance>
+            <OurEvents></OurEvents>
             <Teastimonials></Teastimonials>
         </div>
     );

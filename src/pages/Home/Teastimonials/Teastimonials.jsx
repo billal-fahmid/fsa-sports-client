@@ -20,7 +20,7 @@ const Teastimonials = () => {
 
                 <div class="lg:grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-5">
                   {
-                    reviews.map(review=>  <div class="p-4 text-gray-800 rounded-lg shadow-md">
+                    reviews.map(review=>  <div class="p-4 text-gray-800 rounded-lg shadow-md ">
                     <div class="mb-2">
                         <p class="mb-2 text-center text-gray-600 ">
                             {review.review}

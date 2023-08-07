@@ -56,4 +56,57 @@
   ]
 
 
+  [
+    {
+      "eventName": "Annual Science Fair",
+      "date": "2023-09-15",
+      "shortEventDescription": "Science projects showcase for students and enthusiasts.",
+      "eventImg": "https://i.ibb.co/5c0pgMy/Untitled-112-600x400.jpg",
+      "teacherImg": "https://i.ibb.co/PYSSPcG/Untitled-111-600x400.jpg",
+      "teacherName": "Dr. Emily Johnson",
+      "teacherFrom": "Science Department"
+    },
+    {
+      "eventName": "Literary Week",
+      "date": "2023-10-20",
+      "shortEventDescription": "Celebrate literature and storytelling through various activities.",
+      "eventImg": "https://i.ibb.co/5jtCwKb/Untitled-12-600x400.jpg",
+      "teacherImg": "https://i.ibb.co/5c0pgMy/Untitled-112-600x400.jpg",
+      "teacherName": "Mr. David Smith",
+      "teacherFrom": "English Department"
+    },
+    {
+      "eventName": "Music Night",
+      "date": "2023-11-25",
+      "shortEventDescription": "An evening of melodious performances and musical entertainment.",
+      "eventImg": "https://i.ibb.co/bv4r2tz/Untitled-13-600x400.jpg",
+      "teacherImg": "https://i.ibb.co/5jtCwKb/Untitled-12-600x400.jpg",
+      "teacherName": "Ms. Sarah Anderson",
+      "teacherFrom": "Music Department"
+    },
+    {
+      "eventName": "Art Exhibition",
+      "date": "2023-12-10",
+      "shortEventDescription": "Display of creative artworks by talented students and artists.",
+      "eventImg": "https://i.ibb.co/7NfHksG/Untitled-1f-600x400.jpg",
+      "teacherImg": " https://i.ibb.co/bv4r2tz/Untitled-13-600x400.jpg",
+      "teacherName": "Mr. Robert Turner",
+      "teacherFrom": "Arts Department"
+    },
+    {
+      "eventName": "Math Olympiad",
+      "date": "2024-01-05",
+      "shortEventDescription": "Exciting math competition to challenge and reward young mathematicians.",
+      "eventImg": "https://i.ibb.co/PYSSPcG/Untitled-111-600x400.jpg",
+      "teacherImg": "https://i.ibb.co/7NfHksG/Untitled-1f-600x400.jpg",
+      "teacherName": "Mrs. Lisa Adams",
+      "teacherFrom": "Mathematics Department"
+    }
+  ]
+  https://i.ibb.co/5c0pgMy/Untitled-112-600x400.jpg
+  https://i.ibb.co/5jtCwKb/Untitled-12-600x400.jpg
+  https://i.ibb.co/bv4r2tz/Untitled-13-600x400.jpg
+  https://i.ibb.co/7NfHksG/Untitled-1f-600x400.jpg
+  https://i.ibb.co/PYSSPcG/Untitled-111-600x400.jpg  
+
  

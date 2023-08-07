@@ -30,11 +30,11 @@ const Experiance = () => {
                     viewport={{ once: false, amount: 0.3 }}
                     className='flex items-center md:flex-row flex-col justify-center gap-10 mb-16'>
                     <div className='lg:w-1/2 w-full lg:pr-16 text-right'>
-                        <h2 className='text-2xl pb-5'>Learn at your own pace</h2>
-                        <p className='text-gray-500 text-xl'>Programs are available in fall, spring, and summer semesters. Many fall and spring programs offer similar shorter programs in the summer, and some may be combined for a full academic year.</p>
+                        <h2 className='text-2xl pb-5'>Community of opportunities</h2>
+                        <p className='text-gray-500 text-xl'>Center administrator says the goal is to offer the fellowship annually. The fellowship is open to all graduate students who have an unpaid internship or field research in subject areas that align with the center’s mission.</p>
                     </div>
                     <div className='lg:w-1/2 w-full flex justify-start'>
-                        <img className='rounded-full object-contain' src='https://i.ibb.co/Tkt48hg/Untitled-24-426x426.jpg' alt="" />
+                        <img className='rounded-full object-contain' src='https://i.ibb.co/ZGMX0s8/Untitled-2-A-426x426.jpg' alt="" />
                     </div>
 
                 </motion.div>
