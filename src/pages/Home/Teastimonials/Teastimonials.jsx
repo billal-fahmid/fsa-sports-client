@@ -14,7 +14,7 @@ const Teastimonials = () => {
 
 
     return (
-        <div className='py-20'>
+        <div className='py-20 my-10'>
             <SectionTitle title={'Testimonials'} subTitle={'What others say about us'}></SectionTitle>
             <div className='mt-10 mb-10'>
 
