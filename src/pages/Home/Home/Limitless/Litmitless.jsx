@@ -22,14 +22,11 @@ const Litmitless = () => {
                         <button className='btn bg-indigo-600 w-40 lg:mt-10'>LEARN MORE</button>
                     </div>
                 </motion.div>
-                <motion.div 
-                 variants={fadeIn('left', 0.3)}
-                 initial={'hidden'}
-                 whileInView={'show'}
-                 viewport={{ once: false, amount: 0.3 }}
+                <div 
+               
                 className='lg:w-1/2 w-full' >
                     <img className='h-screen' src={siteImage} alt="" />
-                </motion.div>
+                </div>
             </div>
         </div>
     );
