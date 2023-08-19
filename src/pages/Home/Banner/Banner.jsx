@@ -1,11 +1,11 @@
 import React from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import slider1 from '../../../assets/banner-img/front-view-trainer-talking-players.jpg'
-import slider2 from '../../../assets/banner-img/medium-shot-football-trainer-helping-kids.jpg'
-import slider3 from '../../../assets/banner-img/medium-shot-smiley-kids-posing-together.jpg'
-import slider4 from '../../../assets/banner-img/sports-teacher-with-her-students.jpg'
-import slider5 from '../../../assets/banner-img/young-basketball-player-shoot.jpg'
+import slider1 from '../../../assets/banner-img/Optimized-front-view-trainer-talking-players.jpg'
+import slider2 from '../../../assets/banner-img/Optimized-medium-shot-football-trainer-helping-kids.jpg'
+import slider3 from '../../../assets/banner-img/Optimized-medium-shot-smiley-kids-posing-together.jpg'
+import slider4 from '../../../assets/banner-img/Optimized-sports-teacher-with-her-students.jpg'
+import slider5 from '../../../assets/banner-img/Optimized-young-basketball-player-shoot.jpg'
 
 const Banner = () => {
     return (
